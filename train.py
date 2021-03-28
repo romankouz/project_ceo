@@ -32,7 +32,7 @@ if __name__ == '__main__':
         train(args.dataset if args.dataset is not None else "MNIST", "Adam")
         train(args.dataset if args.dataset is not None else "MNIST", "Adagrad")
         train(args.dataset if args.dataset is not None else "MNIST", "Adamax")
-        train(args.dataset if args.dataset is not None else "MNIST", "RMSProp")
+        train(args.dataset if args.dataset is not None else "MNIST", "RMSprop")
         train(args.dataset if args.dataset is not None else "MNIST", "SGD")
     else:
         train(args.dataset if args.dataset is not None else "MNIST",
