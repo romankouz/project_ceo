@@ -1,10 +1,11 @@
 """This is just so that pylint will stop fucking yelling at me."""
 
-from ast import literal_eval
+import ast
 
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+import torch.optim
 
 import pytorch_lightning as pl
 from pytorch_lightning.metrics.functional import accuracy
@@ -30,7 +31,7 @@ class MNISTPredictor(pl.LightningModule):
         return self.forward_pass(x)
 
     def configure_optimizers(self):
-        optimizer = literal_eval("torch.optim." + self.optim + "(self.parameters(), lr=1e-3)")
+        optimizer = getattr(torch.optim, self.optim)(self.parameters(), lr=1e-3)
         return optimizer
 
     def training_step(self, train_batch, batch_idx):
