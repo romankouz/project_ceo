@@ -1,7 +1,5 @@
 """This is just so that pylint will stop fucking yelling at me."""
 
-import ast
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
