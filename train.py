@@ -11,11 +11,11 @@ from model import MNISTPredictor, CIFAR10Predictor
 
 def train(dataset="MNIST", optim="Adam"):
     """This is just so that pylint will stop fucking yelling at me."""
-    data = getattr(torchvision.datasets, dataset)('./', train=True, 
+    data = getattr(torchvision.datasets, dataset)('./', train=True,
                         download=not os.path.isdir(dataset),
                         transform=transforms.ToTensor())
     n_data = len(data)
-    train_n = round(11*n/12)
+    train_n = round(11*n_data/12)
     train_data, val_data = random_split(data, [train_n, n_data-train_n])
     # model
     if dataset=="MNIST":
