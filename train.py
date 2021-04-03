@@ -27,7 +27,7 @@ def train(dataset="MNIST", optim="Adam"):
         train_loader = DataLoader(train_data, batch_size=32)
         val_loader = DataLoader(val_data, batch_size=32)
     # training
-    trainer = pl.Trainer(gpus=1, precision=16, max_epochs=2)
+    trainer = pl.Trainer(gpus=1, precision=16, max_epochs=500)
     trainer.fit(model, train_loader, val_loader)
 
 if __name__ == '__main__':
@@ -42,6 +42,6 @@ if __name__ == '__main__':
         train(args.dataset if args.dataset is not None else "MNIST", "RMSprop")
         train(args.dataset if args.dataset is not None else "MNIST", "SGD")
     else:
-        train(args.dataset if args.dataset is not None else "CIFAR10",
+        train(args.dataset if args.dataset is not None else "MNIST",
               args.optim if args.optim is not None else "Adam")
         
