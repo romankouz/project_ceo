@@ -9,6 +9,10 @@
       The optim argument is case sensitive.
       Additionally, the choice of "All" will train all of the optimizers at once. 
       
+   3b. The choice of datasets include `"MNIST"` and `"CIFAR10"`. If time permits, a setting will be implemented such that
+       if the dataset exists in `torchvision.datasets`, the code will run with the optimizers, though optimizer conditions
+       or convergence will be guaranteed.
+      
       
 # Viewing Results
 1. Navigate to the root directory (.../project_ceo).
