@@ -49,12 +49,12 @@ class MNISTPredictor(pl.LightningModule):
         self.log('train_acc', acc)
         file_train_loss_mnist = 'manual_logs/' + self.optim.lower() + '_train_loss_mnist.txt'
         file_train_acc_mnist = 'manual_logs/' + self.optim.lower() + '_train_acc_mnist.txt'
-        with open(file_train_loss_mnist, 'a') as f:
-            f.write(str(loss) + '\n')
-            f.close()
-        with open(file_train_acc_mnist, 'a') as f:
-            f.write(str(acc) + '\n')
-            f.close()
+        with open(file_train_loss_mnist, 'a') as current_file:
+            current_file.write(str(loss) + '\n')
+            current_file.close()
+        with open(file_train_acc_mnist, 'a') as current_file:
+            current_file.write(str(acc) + '\n')
+            current_file.close()
         return loss
 
     def validation_step(self, val_batch, batch_idx):
@@ -69,12 +69,12 @@ class MNISTPredictor(pl.LightningModule):
         self.log('val_acc', acc)
         file_val_loss_mnist = 'manual_logs/' + self.optim.lower() + '_val_loss_mnist.txt'
         file_val_acc_mnist = 'manual_logs/' + self.optim.lower() + '_val_acc_mnist.txt'
-        with open(file_val_loss_mnist, 'a') as f:
-            f.write(str(loss) + '\n')
-            f.close()
-        with open(file_val_acc_mnist, 'a') as f:
-            f.write(str(acc) + '\n')
-            f.close()
+        with open(file_val_loss_mnist, 'a') as current_file:
+            current_file.write(str(loss) + '\n')
+            current_file.close()
+        with open(file_val_acc_mnist, 'a') as current_file:
+            current_file.write(str(acc) + '\n')
+            current_file.close()
         return loss
 
 
@@ -115,12 +115,12 @@ class CIFAR10Predictor(pl.LightningModule):
         acc = accuracy(preds, target)
         file_train_loss_cifar10 = 'manual_logs/' + self.optim.lower() + '_train_loss_cifar10.txt'
         file_train_acc_cifar10 = 'manual_logs/' + self.optim.lower() + '_train_acc_cifar10.txt'
-        with open(file_train_loss_cifar10, 'a') as f:
-            f.write(str(loss) + '\n')
-            f.close()
-        with open(file_train_acc_cifar10, 'a') as f:
-            f.write(str(acc) + '\n')
-            f.close()
+        with open(file_train_loss_cifar10, 'a') as current_file:
+            current_file.write(str(loss) + '\n')
+            current_file.close()
+        with open(file_train_acc_cifar10, 'a') as current_file:
+            current_file.write(str(acc) + '\n')
+            current_file.close()
         return loss
 
     def validation_step(self, val_batch, batch_idx):
@@ -135,10 +135,10 @@ class CIFAR10Predictor(pl.LightningModule):
         self.log('val_acc', acc)
         file_val_loss_cifar10 = 'manual_logs/' + self.optim.lower() + '_val_loss_cifar10.txt'
         file_val_acc_cifar10 = 'manual_logs/' + self.optim.lower() + '_val_acc_cifar10.txt'
-        with open(file_val_loss_cifar10, 'a') as f:
-            f.write(str(loss) + '\n')
-            f.close()
-        with open(file_val_acc_cifar10, 'a') as f:
-            f.write(str(acc) + '\n')
-            f.close()
+        with open(file_val_loss_cifar10, 'a') as current_file:
+            current_file.write(str(loss) + '\n')
+            current_file.close()
+        with open(file_val_acc_cifar10, 'a') as current_file:
+            current_file.write(str(acc) + '\n')
+            current_file.close()
         return loss
