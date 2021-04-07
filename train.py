@@ -8,6 +8,7 @@ from torch.utils.data import random_split
 import torchvision.datasets
 from torchvision import transforms
 from model import MNISTPredictor, CIFAR10Predictor
+from images import metrics_image
 
 def train(dataset="MNIST", optim="Adam"):
     """This is just so that pylint will stop fucking yelling at me."""
@@ -42,6 +43,7 @@ if __name__ == '__main__':
         train(args.dataset if args.dataset is not None else "MNIST", "RMSprop")
         train(args.dataset if args.dataset is not None else "MNIST", "SGD")
         train(args.dataset if args.dataset is not None else "MNIST", "Adabelief")
+        metrics_image(args.dataset if args.dataset is not None else "MNIST")
     else:
         train(args.dataset if args.dataset is not None else "MNIST",
               args.optim if args.optim is not None else "Adam")
