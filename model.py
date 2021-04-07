@@ -4,6 +4,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim
+from adabelief_pytorch import AdaBelief
 
 import pytorch_lightning as pl
 from pytorch_lightning.metrics.functional import accuracy
@@ -30,7 +31,10 @@ class MNISTPredictor(pl.LightningModule):
         return self.forward_pass(x)
 
     def configure_optimizers(self):
-        optimizer = getattr(torch.optim, self.optim)(self.parameters(), lr=1e-3)
+        if self.optim == "Adabelief":
+            optimizer = AdaBelief(self.parameters(), lr=1e-3)
+        else:
+            optimizer = getattr(torch.optim, self.optim)(self.parameters(), lr=1e-3)
         return optimizer
 
     def training_step(self, train_batch, batch_idx):
@@ -43,6 +47,14 @@ class MNISTPredictor(pl.LightningModule):
         acc = accuracy(preds, target)
         self.log('train_loss', loss)
         self.log('train_acc', acc)
+        file_train_loss_mnist = 'manual_logs/' + self.optim.lower() + '_train_loss_mnist.txt'
+        file_train_acc_mnist = 'manual_logs/' + self.optim.lower() + '_train_acc_mnist.txt'
+        with open(file_train_loss_mnist, 'a') as f:
+            f.write(str(loss) + '\n')
+            f.close()
+        with open(file_train_acc_mnist, 'a') as f:
+            f.write(str(acc) + '\n')
+            f.close()
         return loss
 
     def validation_step(self, val_batch, batch_idx):
@@ -55,6 +67,14 @@ class MNISTPredictor(pl.LightningModule):
         acc = accuracy(preds, target)
         self.log('val_loss', loss)
         self.log('val_acc', acc)
+        file_val_loss_mnist = 'manual_logs/' + self.optim.lower() + '_val_loss_mnist.txt'
+        file_val_acc_mnist = 'manual_logs/' + self.optim.lower() + '_val_acc_mnist.txt'
+        with open(file_val_loss_mnist, 'a') as f:
+            f.write(str(loss) + '\n')
+            f.close()
+        with open(file_val_acc_mnist, 'a') as f:
+            f.write(str(acc) + '\n')
+            f.close()
         return loss
 
 
@@ -79,7 +99,10 @@ class CIFAR10Predictor(pl.LightningModule):
         return self.forward_pass(x)
 
     def configure_optimizers(self):
-        optimizer = getattr(torch.optim, self.optim)(self.parameters(), lr=1e-3)
+        if self.optim == "Adabelief":
+            optimizer = AdaBelief(self.parameters(), lr=1e-3)
+        else:
+            optimizer = getattr(torch.optim, self.optim)(self.parameters(), lr=1e-3)
         return optimizer
 
     def training_step(self, train_batch, batch_idx):
@@ -90,8 +113,14 @@ class CIFAR10Predictor(pl.LightningModule):
         loss = F.cross_entropy(out, target)
         preds = torch.argmax(out, dim=1)
         acc = accuracy(preds, target)
-        self.log('train_loss', loss)
-        self.log('train_acc', acc)
+        file_train_loss_cifar10 = 'manual_logs/' + self.optim.lower() + '_train_loss_cifar10.txt'
+        file_train_acc_cifar10 = 'manual_logs/' + self.optim.lower() + '_train_acc_cifar10.txt'
+        with open(file_train_loss_cifar10, 'a') as f:
+            f.write(str(loss) + '\n')
+            f.close()
+        with open(file_train_acc_cifar10, 'a') as f:
+            f.write(str(acc) + '\n')
+            f.close()
         return loss
 
     def validation_step(self, val_batch, batch_idx):
@@ -104,4 +133,12 @@ class CIFAR10Predictor(pl.LightningModule):
         acc = accuracy(preds, target)
         self.log('val_loss', loss)
         self.log('val_acc', acc)
+        file_val_loss_cifar10 = 'manual_logs/' + self.optim.lower() + '_val_loss_cifar10.txt'
+        file_val_acc_cifar10 = 'manual_logs/' + self.optim.lower() + '_val_acc_cifar10.txt'
+        with open(file_val_loss_cifar10, 'a') as f:
+            f.write(str(loss) + '\n')
+            f.close()
+        with open(file_val_acc_cifar10, 'a') as f:
+            f.write(str(acc) + '\n')
+            f.close()
         return loss

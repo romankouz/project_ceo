@@ -41,7 +41,9 @@ if __name__ == '__main__':
         train(args.dataset if args.dataset is not None else "MNIST", "Adamax")
         train(args.dataset if args.dataset is not None else "MNIST", "RMSprop")
         train(args.dataset if args.dataset is not None else "MNIST", "SGD")
+        train(args.dataset if args.dataset is not None else "MNIST", "Adabelief")
     else:
         train(args.dataset if args.dataset is not None else "MNIST",
               args.optim if args.optim is not None else "Adam")
+    # insert code here that deletes trailing newlines if need be
         
