@@ -2,7 +2,7 @@
 
 # Step-by-step Instructions for Use
 1. Clone this repository.
-2. Navigate to the root directory (.../project_ceo).
+2. Open a terminal and navigate to the root directory (.../project_ceo).
 3. Run the following: `python train.py --dataset "MNIST" --optim "Adam"` 
 
    3a. The choice of optimizers at the moment include `"Adam"`, `"SGD"`, `"Adamax"`, `"RMSProp"` `"Adabelief"`, and `"Adagrad"`.
