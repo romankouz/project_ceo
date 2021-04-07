@@ -24,7 +24,7 @@ def metrics_image(dataset="MNIST"):
                 raw_values = [float(float_note(x_value)) for x_value in f.read().split('\n')[:-1]]
                 # this is wrong
                 n = len(raw_values)
-                batch_means = [float(np.mean(raw_values[(n//500)*i:(n//500)*(i+1)])) 
+                batch_means = [float(np.mean(raw_values[(n//500)*i:(n//500)*(i+1)]))
                                for i in range(500)]
                 logger_dict[file] = batch_means
                 print(file[:-4] + " logged successfully!")
