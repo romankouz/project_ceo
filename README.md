@@ -15,6 +15,4 @@
       
       
 # Viewing Results
-1. Navigate to the root directory (.../project_ceo).
-2. Run `tensorboard --logdir=lightning_logs`
-3. Copy and paste the URL provided at the very end into a web browser.
+1. The training and validation accuracies are available in the /images directory.
