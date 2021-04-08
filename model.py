@@ -1,4 +1,4 @@
-"""This is just so that pylint will stop fucking yelling at me."""
+"""Defining the models used for MNIST and CIFAR-10 Predictors"""
 
 import torch
 import torch.nn as nn
@@ -12,7 +12,7 @@ from pytorch_lightning.metrics.functional import accuracy
 
 class MNISTPredictor(pl.LightningModule):
 
-    """This is just so that pylint will stop fucking yelling at me."""
+    """MNIST Predictor"""
 
     def __init__(self, optim="Adam"):
         super().__init__()
@@ -80,7 +80,7 @@ class MNISTPredictor(pl.LightningModule):
 
 class CIFAR10Predictor(pl.LightningModule):
 
-    """This is just so that pylint will stop fucking yelling at me."""
+    """CIFAR-10 Predictor"""
 
     def __init__(self, optim="Adam"):
         super().__init__()
