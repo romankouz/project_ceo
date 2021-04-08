@@ -11,7 +11,7 @@
       
    3b. The choice of datasets include `"MNIST"` and `"CIFAR10"`. If time permits, a setting will be implemented such that
        if the dataset exists in `torchvision.datasets`, the code will run with the optimizers, though optimizer conditions
-       or convergence will be guaranteed.
+       or convergence will not be guaranteed.
       
       
 # Viewing Results
