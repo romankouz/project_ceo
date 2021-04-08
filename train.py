@@ -1,4 +1,4 @@
-"""This is just so that pylint will stop fucking yelling at me."""
+"""Script of training models from command line."""
 
 import os
 import argparse
@@ -11,7 +11,7 @@ from model import MNISTPredictor, CIFAR10Predictor
 from images import metrics_image
 
 def train(dataset="MNIST", optim="Adam"):
-    """This is just so that pylint will stop fucking yelling at me."""
+    """Training Function"""
     data = getattr(torchvision.datasets, dataset)('./', train=True,
                         download=not os.path.isdir(dataset),
                         transform=transforms.ToTensor())

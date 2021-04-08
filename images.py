@@ -1,4 +1,4 @@
-"""This is just so pylint stops fucking yelling at me."""
+"""A script for compiling logs and images."""
 import os
 import re
 
