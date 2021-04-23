@@ -1,31 +1,20 @@
 """A script for compiling logs and images."""
 import os
-import re
 
 import numpy as np
 import matplotlib.pyplot as plt
 
-def metrics_image(dataset="MNIST"):
+def metrics_image(dataset="MNIST", n_epochs=500):
     """Creates plot of loss and accuracy analytics."""
-    quantity = re.compile(r'\d\.\d*,')
-    scientific = re.compile(r'\d\.\d*e-\d*,')
     logger_dict = {}
     for file in os.listdir("manual_logs"):
         if dataset.lower() in file:
             with open("manual_logs/" + file, 'r') as f:
-
-                def float_note(x_value):
-                    """Converts the list of string logs into a
-                    list of strings that are float convertible."""
-                    if len(re.findall(quantity, x_value)) == 1:
-                        return re.findall(quantity, x_value)[0][:-1]
-                    return re.findall(scientific, x_value)[0][:-1]
-
-                raw_values = [float(float_note(x_value)) for x_value in f.read().split('\n')[:-1]]
-                # this is wrong
+                string_values = f.read().split('\n')[:-1]
+                raw_values = [float(x) for x in string_values]
                 n = len(raw_values)
-                batch_means = [float(np.mean(raw_values[(n//500)*i:(n//500)*(i+1)]))
-                               for i in range(500)]
+                batch_means = [float(np.mean(raw_values[(n//n_epochs)*i:(n//n_epochs)*(i+1)]))
+                               for i in range(n_epochs)]
                 logger_dict[file] = batch_means
                 print(file[:-4] + " logged successfully!")
 
