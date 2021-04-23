@@ -17,5 +17,6 @@
 # Viewing Results
 1. The training and validation accuracies are available in the /images directory.
 
-The final paper generated for the project can be read here: [606_Project.pdf](https://github.com/roromaniac/project_ceo/files/6363599/606_Project_draft.pdf)
+The final paper generated for the project can be read here: [606_Project.pdf](https://github.com/roromaniac/project_ceo/files/6363608/606_Project.pdf)
+
 
